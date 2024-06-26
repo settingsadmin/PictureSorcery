@@ -1,0 +1,25 @@
+26-06-2024 16:19 GMT+1
+
+initial commit
+
++ <src/common/func_decl.h> function declaration macros:
+{
+    + always inline: _ALWIN
+    + _NEVIN: never inline
+}
+
++ <src/imageData/...> basic image data types: 
+{
+    + <.../pxRgba_type.h> pixel type: struct pxRgba_t
+    + <.../pxVecSize_type.h> pixel vector dimension size types: pxVec2W_t, pxVec2H_t, pxVec2D_t
+    + <.../pxRgbaVec2_type.h> pixel vector 2d type: struct pxRgbaVec2_t
+}
+
++ <src/common/stdio_wrapper.h> wrapper for stdio.h with warning surpression
+
++ <src/common/...> start implementing file type:
+{
+    + <.../file*> self explanatory
+}
+
++ <src/imageFormat/...> declare necessity of validating image file formats

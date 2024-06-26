@@ -1,0 +1,27 @@
+create file format with fast lossless compression:
+    define an escape: two consecutive blank (r=0, g=0, b=0, a=0) pixels.
+    two bytes following an escape determine the command
+
+
+
+    command 0 = "repeat pixels", with syntax {pixel_to_repeat, repetition_count}.
+    examples:
+    if you want to repeat 2 blank pixels (effectively bypassing the escape):
+        key          :  escape,       command,      pixel_to_repeat,  repetition_count
+        c pseudocode :  (uint16_t)0,  (uint16_t)0,  (pxRgba_t)0,      (uint16_t)2
+
+    if you want to repeat 50 blank pixels:
+        c pseudocode :  (uint16_t)0, (uint16_t)0, (pxRgba_t)0, (uint16_t)50
+
+    if you want to repeat 65335 red pixels:
+        c pseudocode :  (uint16_t)0, (uint16_t)0, (pxRgba_t){r=255,g=0,b=0,a=255}, (uint16_t)65535
+
+    if you want to repeat 65536 red pixels:
+        c pseudocode :
+            (uint16_t)0, (uint16_t)0, (pxRgba_t){r=255,g=0,b=0,a=255}, (uint16_t)65535,
+            (pxRgba_t){r=255,g=0,b=0,a=255}
+
+    if you want to repeat 80000 red pixels:
+        c pseudocode :  
+            (uint16_t)0, (uint16_t)0, (pxRgba_t){r=255,g=0,b=0,a=255}, (uint16_t)65535,
+            (uint16_t)0, (uint16_t)0, (pxRgba_t){r=255,g=0,b=0,a=255}, (uint16_t)(80000-65535)
