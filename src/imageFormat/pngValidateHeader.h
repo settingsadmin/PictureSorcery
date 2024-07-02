@@ -8,7 +8,7 @@
 #include <stdbool.h>
 
 
-#define ________pngValidateHeader_func_decl   \
+#define ________pngValidateHeader_func_decl     \
     bool                                        \
     png_validate_header                         \
     (                                           \
